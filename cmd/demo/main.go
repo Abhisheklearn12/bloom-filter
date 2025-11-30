@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	bf := bloom.NewWithEstimates(10000, 0.01)
+	bf := bloom.NewSafeWithEstimates(10000, 0.01)
 	fmt.Println(bf.Info())
 
 	keys := [][]byte{
@@ -29,6 +29,6 @@ func main() {
 	}
 
 	for _, c := range checks {
-		fmt.Printf("MightContain(%q) = %v\n", c, bf.MightContain(c))
+		fmt.Printf("%s: %v\n", c, bf.MightContain(c))
 	}
 }
